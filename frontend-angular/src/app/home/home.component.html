@@ -1,0 +1,84 @@
+
+<div class="container" id="main-container">
+    <div class="row">
+        <div *ngFor="let flat of flats" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src="{{flat?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{flat.residentName}}</h5>
+                        <p class="m-0">No: {{flat.flatNumber}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Dues : <a href="#">{{ flat.dues | tlCurrency }}</a></li>
+                    <li class="list-group-item">Due Status : <a [ngStyle]="{ color: flat.paid ? 'green' : 'red' }">{{ flat.paid ? 'Paid' : 'Not Paid' }}</a></li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a (click)="onOpenModal(flat,'isPaid')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onOpenModal(flat,'delete')" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </div>
+                    <ul class="social-links list-inline mb-0">
+                        
+                    </ul>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteFlatModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="deleteModelLabel">Delete Flat</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <p>Are you sure you want to delete this flat?</p>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button (click)="onDeleteFlat(deleteFlat.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- isPaid Modal -->
+<div class="modal fade" id="isPaidModal" tabindex="-1" role="dialog" aria-labelledby="isPaidModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="isPaidModalLabel">Update Due Status</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="isPaidSelect">Status:</label>
+              <select id="isPaidSelect" class="form-control" [(ngModel)]="selectedIsPaid" name="isPaidSelect">
+                <option [ngValue]="true">Paid</option>
+                <option [ngValue]="false">Not Paid</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+           <button (click)="onUpdateIsPaid()" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+     </div>
+  </div>
+</div>
+

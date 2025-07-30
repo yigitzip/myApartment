@@ -1,0 +1,24 @@
+# ===== Java / Spring Boot =====
+target/
+*.class
+*.log
+*.jar
+*.war
+*.iml
+.gradle/
+.idea/
+.mvn/wrapper/
+
+# ===== Angular / Node.js =====
+node_modules/
+dist/
+.env
+
+# ===== Sistem dosyaları =====
+.DS_Store
+Thumbs.db
+
+# ===== VS Code =====
+.vscode/
+
+**/application.properties

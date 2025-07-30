@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="p-4 shadow rounded-4 mx-auto" style="width: 100%; max-width: 400px;">
+    <div class="text-center mb-3">
+      <h4 class="text-center mb-4 fw-bold" style="font-size: 2.5rem;">Create Account</h4>
+    </div>
+  
+    <!-- Username -->
+    <div class="form-outline mb-3">
+      <label class="form-label" for="registerUsername">Username</label>
+      <input formControlName="username" type="text" id="registerUsername" class="form-control form-control-lg" placeholder="Username" />
+      <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+        <small class="text-danger">Username is required and must be at least 3 characters long</small>
+      </div>
+    </div>
+  
+    <!-- Apartment Name -->
+    <div class="form-outline mb-3">
+      <label class="form-label" for="registerApartmentName">Apartment Name</label>
+      <input formControlName="apartmentName" type="text" id="registerApartmentName" class="form-control form-control-lg" placeholder="Apartment Name" />
+      <div *ngIf="registerForm.get('apartmentName')?.invalid && registerForm.get('apartmentName')?.touched">
+        <small class="text-danger">Apartment Name is required</small>
+      </div>
+    </div>
+  
+    <!-- Password -->
+    <div class="form-outline mb-3">
+      <label class="form-label" for="registerPassword">Password</label>
+      <input formControlName="password" type="password" id="registerPassword" class="form-control form-control-lg" placeholder="••••••••" />
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <small class="text-danger">Password is required and must be at least 6 characters long</small>
+      </div>
+    </div>
+  
+    <!-- Checkbox -->
+    
+  
+    <!-- Submit -->
+    <button type="submit" class="btn btn-success w-100 btn-lg mb-3" [disabled]="registerForm.invalid">Sign up</button>
+  
+    <!-- Already have an account -->
+    <div class="text-center">
+      <p class="mb-0">Already have an account? <a class="fw-semibold" routerLink="/login">Login here</a></p>
+    </div>
+  </form>
+</div>
+  
