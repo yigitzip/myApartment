@@ -13,6 +13,6 @@
 - keep track of dues
 - log out :)
 
-# Install mySQL Database and fill the placeholder at application.properties
-# Start using..
+## Install mySQL Database and fill the placeholder at application.properties
+## Start using..
 
